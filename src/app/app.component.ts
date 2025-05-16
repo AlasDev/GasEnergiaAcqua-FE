@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {NavBarComponent} from './components/nav-bar/nav-bar.component';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavBarComponent],
+  standalone: false,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'GasEnergiaAcqua';
