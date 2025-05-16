@@ -1,6 +1,11 @@
 <nav>
-  <button type="button" routerLink="login">login</button>
-  <button type="button" routerLink="register">signup</button>
-  <button type="button" routerLink="login" (click)="authService.logout()">logout</button>
+  <div *ngIf="(authService._loginStatus| async)">
+    <a routerLink="profile" (click)="userService.getLoggedUser()">my profile</a>
+    <a routerLink="homepage">homepage</a>
+  </div>
+  <div>
+    <button type="button" routerLink="login" *ngIf="!(authService._loginStatus | async)">login</button>
+    <button type="button" routerLink="register" *ngIf="!(authService._loginStatus | async)">signup</button>
+    <button type="button" routerLink="login" *ngIf="(authService._loginStatus | async)" (click)="authService.logout()">logout</button>
+  </div>
 </nav>
-
