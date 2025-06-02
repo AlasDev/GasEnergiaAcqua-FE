@@ -12,5 +12,6 @@ export class UtilityMeterAccordionComponent implements OnInit {
   ngOnInit(): void {
       throw new Error('Method not implemented.');
   }
+  //TODO need to make this an actual accordion
   @Input() utilityMeter!: UtilityMeter;
 }
