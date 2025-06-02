@@ -1,0 +1,27 @@
+<div>
+  <form [formGroup]="utilityMeterForm" (ngSubmit)="onSubmit()">
+    <select formControlName="resourceTypeId">
+      <option [value]="resourceType" *ngFor="let resourceType of (resourceType$ | async)">{{resourceType.typeName}}</option>
+    </select>
+
+    <select formControlName="utilityMeterTypeId">
+      <option [value]="utilityMeterType" *ngFor="let utilityMeterType of (utilityMeterType$ | async)">{{utilityMeterType.typeName}}</option>
+    </select>
+
+    <input type="text" formControlName="servicePointIdentifier" placeholder="service point identifier">
+    <input type="text" formControlName="serialNumber" placeholder="serial number">
+    <input type="text" formControlName="meterName" placeholder="meter name">
+    <input type="date" formControlName="fromInstallationDateAt">
+    <input type="date" formControlName="toInstallationDateAt">
+    <button type="submit">Search</button>
+    <button type="button" (click)="resetForm()">Reset</button>
+  </form>
+</div>
+<div>
+  <ul>
+    <li *ngIf="(utilityMeters$ | async)?.length === 0">no data</li>
+    <li *ngFor="let utilityMeter of (utilityMeters$ | async)">
+      <app-utility-meter-accordion [utilityMeter]="utilityMeter"></app-utility-meter-accordion>
+    </li>
+  </ul>
+</div>
