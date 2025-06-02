@@ -4,6 +4,7 @@ import {AuthService} from '../../services/auth.service';
 import {UserService} from '../../services/user.service';
 import {routes} from '../../app.routes';
 import {NgIf} from '@angular/common';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,11 +18,8 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("NavBar initialized");
-    if (localStorage.getItem("token") != null) {
-      this.authService._loginStatus.next(true)
-    } else {
-      this.authService._loginStatus.next(false)
-      this.router.navigate(['login']);
-    }
+    this.authService.isLogged();
   }
+
+  protected readonly AppComponent = AppComponent;
 }
