@@ -23,19 +23,11 @@ export interface UtilityMeterSummary {
 }
 
 /**
- * type of resource the meter is tracking (example: water)
- */
-export interface ResourceType {
-  id: number;
-  typeName: string;
-}
-
-/**
  * type of reading retrieval the utility meter uses (example: automatic)
  */
 export interface UtilityMeterType {
   id: number;
-  methodName: string;
+  typeName: string;
 }
 
 export interface UtilityMeterFilter {
@@ -59,6 +51,9 @@ export interface UtilityMeterFilter {
 }
 
 export interface UtilityMeterFilterReduced {
+  resourceTypeId?: number;
+  utilityMeterTypeId?: number;
+
   servicePointIdentifier?: string;
   serialNumber?: string;
   meterName?: string;
